@@ -39,8 +39,8 @@ class stunnel {
                   $TIMEOUTconnect = false, $TIMEOUTidle = false, $transparent = false,
                   $verify = false ) {
 
-    real_client = $client ? { default => "yes" }
-    real_pid = $pid ? { false => "/${name}.pid", default => $pid }
+    $real_client = $client ? { default => "yes" }
+    $real_pid = $pid ? { false => "/${name}.pid", default => $pid }
                     
     file { "/etc/stunnel/${name}.conf":
       ensure => $ensure,
