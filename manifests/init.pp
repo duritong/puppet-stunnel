@@ -24,7 +24,7 @@ class stunnel {
     default: { include stunnel::default }
   }
 
-  define client ( $ensure = present, $accept = false, $capath = false,
+  define service ( $ensure = present, $accept = false, $capath = false,
                   $cafile = false, $cert = false, $chroot = false,
                   $ciphers = false, $client = false, $compress =
                   false, $connect = false, $crlpath = false, $crlfile
@@ -51,7 +51,7 @@ class stunnel {
                     
     file { "/etc/stunnel/${name}.conf":
       ensure => $ensure,
-      content => template('stunnel/client.conf.erb'), 
+      content => template('stunnel/service.conf.erb'), 
       owner => root, group => 0, mode => 0600,
       require => File["/etc/stunnel"],
       notify => Service[stunnel];
