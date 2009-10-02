@@ -25,14 +25,6 @@ end -%>
 	end
 end -%>
 
-<%= 'EGD = ' + EGD if EGD %>
-<%= 'engine = ' + engine if engine %>
-<%= 'engineCtrl = ' + engineCtrl if engineCtrl %>
-
-<%= 'RNDbytes = ' + RNDbytes if RNDbytes %>
-<%= 'RNDfile = ' + RNDfile if RNDfile %>
-<%= 'RNDoverwrite = ' + RNDoverwrite if RNDoverwrite %>
-
 <%- %w{EGD engine engineCtrl RNDbytes RNDfile RNDoverwrite}.each do |v|
     if has_variable?(v) and instance_variable_get("@#{v}").to_s != "false" -%>
 <%= v + " = " + instance_variable_get("@#{v}").to_s %>
