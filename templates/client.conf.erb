@@ -25,7 +25,7 @@ end -%>
 	end
 end -%>
 
-<%- %w{EGD engine engineCtrl RNDbytes RNDfile RNDoverwrite}.each do |v|
+<%- %w{egd engine enginectrl rndbytes rndfile rndoverwrite}.each do |v|
     if has_variable?(v) and instance_variable_get("@#{v}").to_s != "false" -%>
 <%= v + " = " + instance_variable_get("@#{v}").to_s %>
 <%-
@@ -34,10 +34,10 @@ end -%>
 
 ; Service-level configuration
 <%= '[' + name + ']' %>
-<%- %w{accept CApath CAfile cert ciphers connect CRLpath CRLfile delay engineNum exec 
-       execargs failover ident key local OSCP OCSPflag options protocol protocolAuthentication
-       protocolHost protocolPassword protocolUsername pty retry session sslVersion stack 
-       TIMEOUTbusy TIMEOUTclose TIMEOUTconnect TIMEOUTidle transparent verify}.each do |v|
+<%- %w{accept capath cafile cert ciphers connect crlpath crlfile delay enginenum exec 
+       execargs failover ident key local oscp ocspflag options protocol protocolauthentication
+       protocolhost protocolpassword protocolusername pty retry session sslversion stack 
+       timeoutbusy timeoutclose timeoutconnect timeoutidle transparent verify}.each do |v|
     if has_variable?(v) and instance_variable_get("@#{v}").to_s != "false" -%>
 <%= v + ' = ' + instance_variable_get("@#{v}").to_s %>
 <%-

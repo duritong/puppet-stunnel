@@ -24,26 +24,26 @@ class stunnel {
     default: { include stunnel::default }
   }
 
-  define client ( $ensure = present, $accept = false, $CApath = false,
-                  $CAfile = false, $cert = false, $chroot = false,
+  define client ( $ensure = present, $accept = false, $capath = false,
+                  $cafile = false, $cert = false, $chroot = false,
                   $ciphers = false, $client = false, $compress =
-                  false, $connect = false, $CRLpath = false, $CRLfile
-                  = false, $debuglevel = false, $delay = false, $EGD =
+                  false, $connect = false, $crlpath = false, $crlfile
+                  = false, $debuglevel = false, $delay = false, $egd =
                   false, $engine = false, $engineCtrl = false,
-                  $engineNum = false, $exec = false, $execargs =
+                  $enginenum = false, $exec = false, $execargs =
                   false, $failover = false, $ident = false, $key =
-                  false, $local = false, $OSCP = false, $OCSPflag =
+                  false, $local = false, $oscp = false, $ocspflag =
                   false, $options = false, $output = false, $pid =
-                  false, $protocol = false, $protocolAuthentication =
-                  false, $protocolHost = false, $protocolPassword =
-                  false, $protocolUsername = false, $pty = false,
-                  $retry = false, $RNDbytes = false, $RNDfile = false,
-                  $RNDoverwrite = false, $service = false, $session =
+                  false, $protocol = false, $protocolauthentication =
+                  false, $protocolhost = false, $protocolpassword =
+                  false, $protocolusername = false, $pty = false,
+                  $retry = false, $rndbytes = false, $rndfile = false,
+                  $rndoverwrite = false, $service = false, $session =
                   false, $setuid = "stunnel4", $setgid = "stunnel4",
                   $socket = [ "l:TCP_NODELAY=1", "r:TCP_NODELAY=1"],
-                  $sslVersion = "SSLv3", $stack = false, $syslog =
-                  false, $TIMEOUTbusy = false, $TIMEOUTclose = false,
-                  $TIMEOUTconnect = false, $TIMEOUTidle = false,
+                  $sslversion = "SSLv3", $stack = false, $syslog =
+                  false, $timeoutbusy = false, $timeoutclose = false,
+                  $timeoutconnect = false, $timeoutidle = false,
                   $transparent = false, $verify = false ) {
 
     $real_client = $client ? { default => "yes" }
