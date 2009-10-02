@@ -73,8 +73,7 @@ class stunnel::base {
     name => 'stunnel',
     enable => true,
     ensure => running,
-    hasstatus => false,
-    require => File["/etc/stunnel/stunnel.conf"];
+    hasstatus => false;
   }
   
   if $use_nagios {
@@ -90,9 +89,6 @@ class stunnel::linux inherits stunnel::base {
   if $stunnel_ensure_version == '' { $stunnel_ensure_version = 'installed' } 
   package { 'stunnel':
     ensure => $stunnel_ensure_version
-  }
-  File[stunnel_config]{
-    require => Package[stunnel]
   }
 }    
 
