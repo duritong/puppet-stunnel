@@ -40,7 +40,7 @@ class stunnel {
                   $retry = false, $RNDbytes = false, $RNDfile = false,
                   $RNDoverwrite = false, $service = false, $session =
                   false, $setuid = "stunnel4", $setgid = "stunnel4",
-                  $socket = [ "l:TCP_NODELAY=1, "r:TCP_NODELAY=1"],
+                  $socket = [ "l:TCP_NODELAY=1", "r:TCP_NODELAY=1"],
                   $sslVersion = "SSLv3", $stack = false, $syslog =
                   false, $TIMEOUTbusy = false, $TIMEOUTclose = false,
                   $TIMEOUTconnect = false, $TIMEOUTidle = false,
