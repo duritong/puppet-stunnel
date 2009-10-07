@@ -79,7 +79,7 @@ class stunnel::base {
   if $use_nagios {
     case $nagios_stunnel_procs {
       'false': { info("We aren't doing nagios checks for stunnel on ${fqdn}" ) }
-      default: { nagios::service { "stunnel": check_command => "nagios-stat-proc!/usr/bin/stunnel4 /etc/stunnel/stunnel.conf!6!5!proc"; } }
+      default: { nagios::service { "stunnel": check_command => "nagios-stat-proc!/usr/bin/stunnel4!6!5!proc"; } }
     }
   }
 }
@@ -101,7 +101,7 @@ class stunnel::debian inherits stunnel::linux {
   
   Service[stunnel] {
     name => 'stunnel4',
-    pattern => '/usr/bin/stunnel4 /etc/stunnel/stunnel.conf',
+    pattern => '/usr/bin/stunnel4',
   }
   
   # make the /etc/default/stunnel configurable with a variable
