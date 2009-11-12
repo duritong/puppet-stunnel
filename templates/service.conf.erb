@@ -3,6 +3,7 @@
 ; puppet runs, please make configuration changes to this service in puppet
 
 ; Global configuration options
+<%= 'debug = ' + debuglevel %>
 <%= 'pid = ' + real_pid %>
 <%- %w{chroot setuid setgid service compression}.each do |v|
     if has_variable?(v) and instance_variable_get("@#{v}").to_s != "false" -%>
@@ -18,7 +19,7 @@ end -%>
 <%= socket.map { |i| "socket = #{i}" }. join("\n") %>
 <% end -%>
 
-<%- %w{debug output syslog}.each do |v|
+<%- %w{output syslog}.each do |v|
     if has_variable?(v) and instance_variable_get("@#{v}").to_s != "false" -%>
 <%= v + " = " + instance_variable_get("@#{v}").to_s %>
 <%-
@@ -44,4 +45,3 @@ end -%>
     end
 end -%>
 client = <%= client ? 'yes' : 'no' %>
-

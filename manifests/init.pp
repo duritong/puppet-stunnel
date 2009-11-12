@@ -28,7 +28,7 @@ class stunnel {
                   $cafile = false, $cert = false, $chroot = false,
                   $ciphers = false, $client = false, $compress =
                   false, $connect = false, $crlpath = false, $crlfile
-                  = false, $debug = false, $delay = false, $egd =
+                  = false, $debuglevel = false, $delay = false, $egd =
                   false, $engine = false, $engineCtrl = false,
                   $enginenum = false, $exec = false, $execargs =
                   false, $failover = false, $ident = false, $key =
