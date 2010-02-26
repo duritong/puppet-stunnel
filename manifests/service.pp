@@ -1,4 +1,4 @@
-define stunell::service (
+define stunel::service (
   $ensure = present,
   $accept = false,
   $capath = false,
