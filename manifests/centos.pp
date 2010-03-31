@@ -1,4 +1,4 @@
-class stunnel::centos inherits stunnel::base {
+class stunnel::centos inherits stunnel::linux {
 
   file{'/etc/init.d/stunnel':
     source => "puppet://$server/modules/stunnel/${operatingsystem}/stunnel.init",
