@@ -25,6 +25,7 @@ class stunnel {
 
   case $operatingsystem {
     debian: { include stunnel::debian }
+    centos: { include stunnel::centos }
     default: { include stunnel::default }
   }
 
