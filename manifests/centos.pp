@@ -4,7 +4,7 @@ class stunnel::centos inherits stunnel::base {
     source => "puppet://$server/modules/stunnel/${operatingsystem}/stunnel.init",
     require => Package['stunnel'],
     before => Service['stunnel'],
-    owner => root, group => 0, mode => 0600;
+    owner => root, group => 0, mode => 0755;
   }
 
   user::managed{ "stunnel":
