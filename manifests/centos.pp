@@ -1,15 +1,21 @@
 class stunnel::centos inherits stunnel::base {
 
   file{'/etc/init.d/stunnel':
-    source => [ "puppet://$server/modules/stunnel/${fqdn}/stunnel.init",
+    source => "puppet://$server/modules/stunnel/${operatingsystem}/stunnel.init",
     require => Package['stunnel'],
     before => Service['stunnel'],
     owner => root, group => 0, mode => 0600;
   }
 
+  user::managed{ "stunnel":
+    homedir => "/var/run/stunnel",
+    shell => "/sbin/nologin",
+    uid => 105, gid => 105;
+  }
+
   Service['stunnel']{
     hasstatus => true,
-    require => File['/etc/init.d/stunnel']
+    require => [ User['stunnel'], File['/etc/init.d/stunnel'] ]
   }
 
   file{'/etc/stunnel/stunnel.conf':
