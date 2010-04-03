@@ -57,6 +57,8 @@ fi
 # Path to the lock file.
 #
 LOCK_FILE=/var/lock/subsys/stunnel
+# pidfile to be used
+pidfile=/var/run/stunnel/stunnel.pid
 
 #====================================================================
 
@@ -126,7 +128,7 @@ case "$1" in
   fi
   ;;
    status)
-  status stunnel
+  status -p $pidfile stunnel
   RETVAL=$?
   ;;
    *)
