@@ -9,3 +9,5 @@ OPTIONS=""
 
 # Change to one to enable ppp restart scripts
 PPP_RESTART=0
+
+<%= stunnel_default_extra %>
