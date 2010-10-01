@@ -14,6 +14,7 @@ class stunnel::debian inherits stunnel::linux {
   case $stunnel_startboot {
     '': { $stunnel_startboot = '1' }
   }
+
   # make the /etc/default/stunnel extra configurable with a variable
   # and default to adding nothing to the default file
   case $stunnel_default_extra {
