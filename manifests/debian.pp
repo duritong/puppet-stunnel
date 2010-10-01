@@ -9,9 +9,15 @@ class stunnel::debian inherits stunnel::linux {
     pattern => '/usr/bin/stunnel4',
   }
   
-  # make the /etc/default/stunnel configurable with a variable
+  # make the /etc/default/stunnel ENABLED configurable with a variable
+  # and default to on
   case $stunnel_startboot {
     '': { $stunnel_startboot = '1' }
+  }
+  # make the /etc/default/stunnel extra configurable with a variable
+  # and default to adding nothing to the default file
+  case $stunnel_default_extra {
+    '': { $stunnel_default_extra = '' }
   }
   
   file { '/etc/default/stunnel4':
