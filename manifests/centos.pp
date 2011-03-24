@@ -1,7 +1,7 @@
 class stunnel::centos inherits stunnel::linux {
 
   file{'/etc/init.d/stunnel':
-    source => "puppet://$server/modules/stunnel/${operatingsystem}/stunnel.init",
+    source => "puppet:///modules/stunnel/${operatingsystem}/stunnel.init",
     require => Package['stunnel'],
     before => Service['stunnel'],
     owner => root, group => 0, mode => 0755;
@@ -19,9 +19,9 @@ class stunnel::centos inherits stunnel::linux {
   }
 
   file{'/etc/stunnel/stunnel.conf':
-    source => [ "puppet://$server/modules/site-stunnel/${fqdn}/stunnel.conf",
-                "puppet://$server/modules/site-stunnel/stunnel.conf",
-                "puppet://$server/modules/stunnel/${operatingsystem}/stunnel.conf" ],
+    source => [ "puppet:///modules/site-stunnel/${fqdn}/stunnel.conf",
+                "puppet:///modules/site-stunnel/stunnel.conf",
+                "puppet:///modules/stunnel/${operatingsystem}/stunnel.conf" ],
     require => Package['stunnel'],
     notify => Service['stunnel'],
     owner => root, group => 0, mode => 0600;

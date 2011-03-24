@@ -54,6 +54,12 @@ if [ ! -f $CONF ] ; then
 exit 0
 fi
 
+CHROOT=`grep '^chroot' /etc/stunnel/stunnel.conf | head -n 1 | sed 's/ //g' | awk -F= '{ print $2 }'`
+PIDFILE=`grep '^pid' /etc/stunnel/stunnel.conf | head -n 1 | sed 's/ //g' | awk -F= '{ print $2 }'` 
+if [ -n "$CHROOT" ]; then
+    PIDFILE=$CHROOT/$PIDFILE
+fi
+
 # Path to the lock file.
 #
 LOCK_FILE=/var/lock/subsys/stunnel
@@ -96,7 +102,7 @@ stop() {
   else
 
     echo -n $"Shutting down $prog: "
-    killproc stunnel
+    killproc -p $PIDFILE stunnel
     RETVAL=$?
     [ $RETVAL -eq 0 ]
      rm -f $LOCK_FILE
@@ -126,7 +132,7 @@ case "$1" in
   fi
   ;;
    status)
-  status stunnel
+  status -p $PIDFILE stunnel
   RETVAL=$?
   ;;
    *)
