@@ -3,11 +3,11 @@
 # September 2003
 
 # Change to one to enable stunnel automatic startup
-ENABLED=<%= stunnel_startboot %>
+ENABLED=<%= scope.lookupvar('stunnel::startboot') %>
 FILES="/etc/stunnel/*.conf"
 OPTIONS=""
 
 # Change to one to enable ppp restart scripts
 PPP_RESTART=0
 
-<%= stunnel_default_extra %>
+<%= scope.lookupvar('stunnel::default_extra') %>
