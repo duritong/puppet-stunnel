@@ -21,7 +21,8 @@ class stunnel(
   $cluster = '',
   $ensure_version = 'present',
   $startboot = '1',
-  $default_extra = ''
+  $default_extra = '',
+  $nagios_stunnel_procs = false
 ) {
 
   case $::operatingsystem {
@@ -30,7 +31,7 @@ class stunnel(
     default: { include stunnel::default }
   }
 
-  if hiera('use_nagios',false) and hiera('nagios_stunnel_procs',true) {
+  if $nagios_stunnel_procs {
     nagios::service { "stunnel":
       check_command => "nagios-stat-proc!/usr/bin/stunnel4!6!5!proc";
     }
