@@ -41,7 +41,7 @@
 
 # Path to the executable.
 #
-SEXE=/usr/sbin/stunnel
+SEXE=`which stunnel`
 
 # Path to the configuration file.
 #
