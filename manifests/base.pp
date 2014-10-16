@@ -7,7 +7,10 @@ class stunnel::base {
   service { 'stunnel':
     name => 'stunnel',
     enable => true,
-    ensure => running,
+    ensure => $stunnel::ensure_version ? {
+      absent  => stopped,
+      default => running
+    },
     hasstatus => false;
   }
 }
