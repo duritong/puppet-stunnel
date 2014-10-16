@@ -1,18 +1,13 @@
-class stunnel::base($ensure = present) {
+class stunnel::base {
+
   file { "/etc/stunnel":
-    ensure => $ensure ? {
-      absent  => absent,
-      default => directory
-    };
+    ensure => directory;
   }
 
   service { 'stunnel':
-    name      => 'stunnel',
-    enable    => true,
-    ensure    => $ensure ? {
-      absent  => absent,
-      default => running
-    },
+    name => 'stunnel',
+    enable => true,
+    ensure => running,
     hasstatus => false;
   }
 }
